@@ -5,7 +5,7 @@ include '../lib/function.php';
 include '../models/village_model.php';
 $page = null;
 $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
-$title = ucfirst("Kelurahan");
+$title = ucfirst("Kelurahan/Desa");
 
 $_SESSION['menu_active'] = 1;
 

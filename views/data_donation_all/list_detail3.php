@@ -109,7 +109,7 @@
                                     </div>
                                     
                                  <div class="box-footer">
-                                		<a href="<?=$download?>" class="btn btn-success"><i class="fa fa-download"></i> Export PDF</a></div>
+                                		<a href="<?=$download_3?>" class="btn btn-success"><i class="fa fa-download"></i> Export PDF</a></div>
                             	</div>
                                 </div><!-- /.box-body-->
                                

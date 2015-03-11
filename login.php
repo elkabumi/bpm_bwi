@@ -31,7 +31,7 @@
 
         <div class="form-box" id="login-box">
             <div class="header"><div class="bg-logo"><span style="font-size: 1.3em !important;"><strong>Sistem Informasi 
-</strong></span><br>Data Bantuan Sosial</div></div>
+</strong></span><br>EMS E-Monitoring System</div></div>
             <form action="controllers/login.php?page=login" method="post">
                 <div class="body bg-white">
 

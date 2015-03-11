@@ -97,7 +97,7 @@ function load_code(str)
                                   </div>
                                   <div class="col-md-4">
                                       <div class="form-group">
-                                            <label>Code Kec</label>
+                                            <label>Code Kelurahan</label>
                                             <input  readonly="readonly" required type="text" name="i_kab_cod" class="form-control"  value="<?= $kab_code ?>"/>
                                         </div>
                                          </div>

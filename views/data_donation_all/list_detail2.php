@@ -108,7 +108,7 @@
                                     </table>
                                     </div>
                                       <div class="box-footer">
-                                   	<a href="<?=$download?>" class="btn btn-success"><i class="fa fa-download"></i> Export PDF</a>
+                                   	<a href="<?=$download_2?>" class="btn btn-success"><i class="fa fa-download"></i> Export PDF</a>
                                     </div>
                                 </div><!-- /.box-body-->
                         

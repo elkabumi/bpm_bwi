@@ -16,15 +16,16 @@ switch ($page) {
 	case 'list'://list_desa
 		get_header();
 		
-		$action =" data_donation_all.php?page=form_result";
+		$action ="data_donation_all.php?page=form_result";
 		
 		$year_now= date('Y');
+	
 		if(isset($_GET['preview'])){
 				
 				$i_month = get_isset($_GET['month']);
 				$i_year = get_isset($_GET['year']);
 				
-				$nama_bulan = nm_bulan();
+				$nama_bulan = nm_bulan($i_month);
 				
 				
 				$query 	= select(1,$i_year,$i_month); ;//tahap Selesai
@@ -35,7 +36,7 @@ switch ($page) {
 				$total_data3 = count_data(3,$i_year,$i_month); 
 				
 		}else{
-				$nama_bulan = nm_bulan();
+				$nama_bulan = nm_bulan($i_month);
 				$i_year= date('Y');
 				$i_month= date('m');
 				
@@ -46,7 +47,10 @@ switch ($page) {
 				$query3 = select(3,$i_year,$i_month);//tahap baru berjalan
 				$total_data3 = count_data(3,$i_year,$i_month); 
 		}
-		$title = ucfirst("Data Kegiatan Bantuan Keseluruhan Bulan ".$i_bulan." ".$i_year."");
+		$download = "data_donation_all.php?page=report&type=1&year=".$i_year."&month=".$i_month."";
+		$download_2 = "data_donation_all.php?page=report&type=2&year=".$i_year."&month=".$i_month."";
+		$download_3 = "data_donation_all.php?page=report&type=3&year=".$i_year."&month=".$i_month."";
+		$title = ucfirst("Data Kegiatan Bantuan Keseluruhan Bulan ".$nama_bulan." ".$i_year."");
 		
 		include '../views/data_donation_all/form.php';	
 		include '../views/data_donation_all/list_detail.php';
@@ -65,8 +69,24 @@ switch ($page) {
 			//}
 			
 			header("Location: data_donation_all.php?page=list&preview=1&month=$i_month&year=$i_year");
-		break;
-	
+	break;
+	case 'report':
+		
+			$type = (isset($_GET['type'])) ? $_GET['type'] : null;
+			$year = (isset($_GET['year'])) ? $_GET['year'] : null;
+			$month = (isset($_GET['month'])) ? $_GET['month'] : null;
+			switch($type)
+			{
+			case '1': 	$progress="100%(Selesai)"; break;
+			case '2':	$progress="60-99%%(Sedang Berjalan)"; break;
+			case '3':	$progress="0-59%%(Baru Berjalan)"; break;
+			}
+			$nama_bulan = nm_bulan($month);
+			$query 	= select(1,$year,$month); 
+			include '../views/report/data_donation_all.php';	
+			
+		//header("Location: data_donation_all.php?page=list&preview=1&month=$i_month&year=$i_year");
+	break;
 
 }
 ?>

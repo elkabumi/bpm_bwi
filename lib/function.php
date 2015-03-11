@@ -242,9 +242,9 @@ function valid_code($code){
 		}
 	return $code;
 }
-function nm_bulan(){
-	$nama_bulan=array('Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
-	$bulan = date('m') -1;
+function nm_bulan($bulan){
+	$nama_bulan=array(1=>'Januari',2=>'Februari',3=>'Maret',4=>'April',5=>'Mei',6=>'Juni',7=>'Juli',8=>'Agustus',9=>'September',10=>'Oktober',11=>'November',12=>'Desember');
+
 	$get_bulan = $nama_bulan[$bulan];
 	return $get_bulan;	
 }
