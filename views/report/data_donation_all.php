@@ -19,9 +19,22 @@ $content_pdf .= '
                                                     <td>Nama Penerima Bantuan</td>
                                                     <td>Jumlah<br /> Nominal Bantuan</td>
                                                     <td>Progress<br />Bantuan</td>
-                                                    <td>Config</td>
+                                                    
+  </tr>';
+  ?>
+  <?php
+  $content_pdf .= '
+	 <tr>
+   <td>No <br />Urut</td>
+                                                    <td>Nama Kec</td>
+                                                	<td>Nama Desa</td>
+                                                  	<td>Jenis<br /> Kegiatan/Bantuan</td>
+                                                  	<td>Thn <br />Anggaran</td> 
+                                                    <td>Nama Penerima Bantuan</td>
+                                                    <td>Jumlah<br /> Nominal Bantuan</td>
+                                                    <td>Progress<br />Bantuan</td>
+                                                    
   </tr>
- 
 </table>
 ';
 ?>
@@ -30,6 +43,7 @@ $content_pdf .= '
 			require('../lib/pdftable/lib/pdftable.inc.php');
 			$p = new PDFTable();
 			$p->AddPage();
+		
 			$p->setfont('arial','',12);
 			$p->SetMargins(20,20,20);
 			$p->htmltable($content_pdf);
