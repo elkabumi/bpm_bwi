@@ -49,6 +49,7 @@ switch ($page) {
 		$search_button = "search_donation.php";
 		$close_button = "data_donation.php?page=list";
 		
+
 		if($_SESSION['user_grade_id']  == '999'){
 			$id_kec = (isset($_GET['id_kec'])) ? $_GET['id_kec'] : null;
 			$link_close ="<a href='".$close_button."' class='btn btn-success' >Back</a>";
@@ -73,7 +74,7 @@ switch ($page) {
 		get_header();
 		$id_ds = (isset($_GET['id_ds'])) ? $_GET['id_ds'] : null;
 		
-		
+		$download = "data_donation.php?page=report&id_ds=".$id_ds."";
 		$row_loct = get_data_loct($id_ds); 
  		$title = ucfirst("Data Bantuan Desa. ".$row_loct->m_loct_nm."");
 	
@@ -180,7 +181,19 @@ switch ($page) {
 	
 	break;
 	
-	
+		case 'report':
+		
+			$id_ds = (isset($_GET['id_ds'])) ? $_GET['id_ds'] : null;
+			$row_loct = get_data_loct($id_ds); 
+			
+			$date =date('Y/m/d');
+			$query = select_detail($id_ds);
+			
+			include '../views/report/data_donation.php';	
+			
+		//header("Location: data_donation_all.php?page=list&preview=1&month=$i_month&year=$i_year");
+	break;
+
 
 }
 ?>

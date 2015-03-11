@@ -75,9 +75,9 @@
 												<?php 
 												if($_SESSION['user_type_id'] == '1'  or $_SESSION['user_type_id'] == '2'){
 												?>
-												   		<a href="entry_donation.php?page=form&id=<?= $row['d_don_id']?>&type=1" class="btn btn-default" >Edit</a>
+													   		<a href="data_donation_all.php?page=form_edit&id=<?= $row['d_don_id']?>&year=<?=$i_year?>&month=<?=$i_month?>" class="btn btn-default" >Edit</a>
            
-												<?php
+											<?php
                                                 }else{
 												?>
                                                        <a href="data_donation.php?page=form_detail&id=<?= $row['d_don_id']?>" class="btn btn-default" >Detail</a>

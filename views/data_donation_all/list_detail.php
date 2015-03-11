@@ -75,7 +75,7 @@
 												<?php 
 												if($_SESSION['user_type_id'] == '1'  or $_SESSION['user_type_id'] == '2'){
 												?>
-												   		<a href="entry_donation.php?page=form&id=<?= $row['d_don_id']?>&type=1" class="btn btn-default" ><i class="fa fa-pencil"></i></a>
+												   		<a href="data_donation_all.php?page=form_edit&id=<?= $row['d_don_id']?>&year=<?=$i_year?>&month=<?=$i_month?>" class="btn btn-default" >Edit</a>
            
 												<?php
                                                 }else{
@@ -96,15 +96,7 @@
                                            
                                           
                                         </tbody>
-                                       <tfoot>
-                                            <tr>
-                                                <td colspan="10">
-													<?=$link_close_button?>
-                                                    <?=$link_search_button?>
-                                                </td>
-                                               
-                                            </tr>
-                                        </tfoot>
+                                       
                                     </table>
                                     </div>
                                       <div class="box-footer">

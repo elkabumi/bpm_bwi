@@ -22,6 +22,7 @@
                                                   	<th>Thn <br />Anggaran</th>
                                                     <th>Nama Penerima Bantuan</th>
                                                     <th>Jumlah Nominal Bantuan</th>
+                                                      <th>Progress<br />Bantuan</th>
                                                     <th>Config</th>
                                             </tr>
                                         </thead>
@@ -40,7 +41,7 @@
                                                  <td><?= $row['d_don_year']?></td>
                                                  <td><?= $row['d_don_nm']?></td>
                                                  <td><?= $row['d_don_nominal']?></td>
-                                               
+                                                 <td><?= $row['d_don_prog']?>%</td>
                                               <td style="text-align:center;">
 												<?php 
 												if($_SESSION['user_type_id'] == '1'  or $_SESSION['user_type_id'] == '2'){
@@ -78,7 +79,7 @@
                                     </table>
 </div>
                                       <div class="box-footer">
-                                    <a href="<?=$download?>" class="btn btn-success"><i class="fa fa-download"></i> Export PDF</a>
+                                    <a href="<?=$donwload_button?>" class="btn btn-success"><i class="fa fa-download"></i> Export PDF</a>
 								</div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->

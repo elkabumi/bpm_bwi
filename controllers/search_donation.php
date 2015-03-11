@@ -53,6 +53,8 @@ switch ($page) {
 				$type_akses=2;//type_akses 2  dicari dari menu search
 				$query_item = select_search($i_cari, $i_nominal1, $i_nominal2);
 				$title = ucfirst("Data Bantuan Desa");
+			
+				$donwload_button = "search_donation.php?page=report&preview=1&cari=$i_cari&nominal1=$i_nominal1&nominal2=$i_nominal2";
 				include '../views/search_donation/list_detail.php';
 			}
 			
@@ -72,6 +74,24 @@ switch ($page) {
 			//}
 			
 			header("Location: search_donation.php?page=search&preview=1&cari=$i_cari&nominal1=$i_nominal1&nominal2=$i_nominal2");
+		break;
+		
+		case 'report':
+			
+	
+			$id = (isset($_GET['id'])) ? $_GET['id'] : null;
+			
+			//if(isset($_GET['preview'])){
+				$date=date('Y-m-d');
+				$cari = (isset($_GET['cari'])) ? $_GET['cari'] : null;
+				$nominal1 = (isset($_GET['nominal1'])) ? $_GET['nominal1'] : null;
+				$nominal2 = (isset($_GET['nominal2'])) ? $_GET['nominal2'] : null;
+				if($nominal1 != '' and $nominal2 != ''){
+					$total_nominal = "Nominal Bantuan ".format_rupiah($nominal1)." - ".format_rupiah($nominal2)."";
+				}
+				
+				$query = select_search($cari, $nominal1, $nominal2);
+				include '../views/report/search_donation.php';
 		break;
 		}
 ?>

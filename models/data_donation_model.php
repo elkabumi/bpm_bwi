@@ -58,10 +58,11 @@ function get_nominal_bantuan($id,$type){
 }
 
 function select_detail($loct_id){
-	$query = mysql_query("SELECT a.*, b.*, c.* 
+	$query = mysql_query("SELECT a.*, b.*, c.* ,d.m_loct_nm AS nama_kec
 							FROM d_donation a
 							JOIN m_location b ON a.m_loct_id = b.m_loct_id
 							JOIN m_activity c ON c.m_activity_id = a.m_activity_id
+							JOIN m_location d ON b.m_loct_parent_id = d.m_loct_id
 							WHERE a.d_don_id <> 0 AND a.m_loct_id = ".$loct_id."
 						");
 	return $query;

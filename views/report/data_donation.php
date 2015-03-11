@@ -3,12 +3,12 @@ $content_pdf = '';
 $content_pdf .= '
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td align="center" size=24>Data Bantuan Keseluruhan Bulan '.$nama_bulan.'  '.$year.' </td>
+    <td align="center" size=24>Data Bantuan Desa '.$row_loct->m_loct_nm.'</td>
+  </tr>
+  <tr>
+    <td align="center" size=20>Tanggal '.$date.'<br></td>
   </tr>
   
-  <tr>
-    <td align="center" size=18 >Progress '.$progress.'<br></td>
-  </tr>
 </table>';
 $content_pdf .= '
 <table widtd="100%" border="1" cellpadding="4" cellspacing="0" >
@@ -27,7 +27,7 @@ $content_pdf .= '
   	$content_pdf .= '
 	<tr>
   													<td>&nbsp;&nbsp;'.$row->d_don_no.'&nbsp;&nbsp;</td>
-                                                    <td>&nbsp;&nbsp;'.$row->nm_kec.'&nbsp;&nbsp;</td>
+                                                    <td>&nbsp;&nbsp;'.$row->nama_kec.'&nbsp;&nbsp;</td>
                                                 	<td>&nbsp;'.$row->m_loct_nm.'&nbsp;</td>
                                                   	<td>&nbsp;'.$row->m_activity_nm.'&nbsp;</td>
                                                   	<td>&nbsp;'.$row->d_don_year.'&nbsp;</td>

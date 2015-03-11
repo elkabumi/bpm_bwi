@@ -8,7 +8,7 @@
                                     <table id="example_foto" class="table table-bordered ">
                                           <thead>
                                             <tr style="display:none">
-                                            <th width="1">No</th>
+                                          	  <th width="1">No</th>
                                             	<th>&nbsp;</th>
                                                  <th width="1">No</th>
                                       			<th>&nbsp;</th>

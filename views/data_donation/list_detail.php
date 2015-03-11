@@ -15,12 +15,15 @@
                                         <thead>
                                             <tr>
                                            
+                                               	 
                                                	 	<th>No Urut</th>
-                                                	<th>Nama Desa</th>
-                                                 	<th>Jenis Kegiatan/Bantuan</th>
-                                                  	<th>Tahuna Anggaran</th>
+                                                	<th>Nama Kecamatan</th>
+                                                    <th>Nama Desa</th>
+                                                 	<th>Jenis<br /> Kegiatan/Bantuan</th>
+                                                  	<th>Thn <br />Anggaran</th>
                                                     <th>Nama Penerima Bantuan</th>
                                                     <th>Jumlah Nominal Bantuan</th>
+                                                           <th>Progress<br />Bantuan</th>
                                                     <th>Config</th>
                                             </tr>
                                         </thead>
@@ -33,11 +36,13 @@
                                             <tr>
                                         
                                                  <td><?= $row['d_don_no']?></td>
+                                                  <td><?= $row['nama_kec']?></td>
                                                  <td><?= $row['m_loct_nm']?></td>
                                                  <td><?= $row['m_activity_nm']?></td>
                                                  <td><?= $row['d_don_year']?></td>
                                                  <td><?= $row['d_don_nm']?></td>
                                                  <td><?= $row['d_don_nominal']?></td>
+                                                  <td><?= $row['d_don_prog']?>%</td>
                                                
                                               <td style="text-align:center;">
 												<?php 
@@ -74,7 +79,9 @@
                                             </tr>
                                         </tfoot>
                                     </table>
-
+   <div class="box-footer">
+                                    <a href="<?=$download?>" class="btn btn-success"><i class="fa fa-download"></i> Export PDF</a>
+								</div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>
