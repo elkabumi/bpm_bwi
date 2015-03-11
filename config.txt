@@ -1,0 +1,4 @@
+DB:elkabumi_bwi
+user:elkabumi_user
+pass : bw1_p4s
+-aacS03@d]6c
