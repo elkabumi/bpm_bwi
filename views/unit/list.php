@@ -57,7 +57,7 @@
                                             <tr>
                                             <th width="5%">No</th>
                                                 <th>Nama Satuan</th>
-                                           
+                                             <th>Config</th>
                                             </tr>
                                         </thead>
                                         <tbody>
