@@ -4,33 +4,23 @@ include '../lib/function.php';
 include '../models/data_donation_model.php';
 
 $page = null;
-/*
+
 	if($_SESSION['user_grade_id']  == '999'){
 		$page = (isset($_GET['page'])) ? $_GET['page'] : "list";
 	}else{
 		$page = (isset($_GET['page'])) ? $_GET['page'] : "list_desa";
 	}
-*/
-	$page = (isset($_GET['page'])) ? $_GET['page'] : "list";
+
+	
 $_SESSION['menu_active'] = 3;
 
 switch ($page) {
-	case 'list'://list_kec
-		get_header();
-			$title = ucfirst("data kegiatan bantuan");
-			
-			$query = select_kec();
-			$search_button = "search_donation.php?page=search";
-		
-			include '../views/data_donation/list_kec.php';
-		
-		get_footer();
-	break;
+
 
 	case 'list'://list_kec
 		get_header();
 		if($_SESSION['user_grade_id']  == '999'){
-			$title = ucfirst("Data Bantuan");
+			$title = ucfirst("data kegiatan bantuan");
 			
 			$query = select_kec();
 			$search_button = "search_donation.php?page=search";
@@ -117,7 +107,7 @@ switch ($page) {
 		$f_id = (isset($_GET['f_id'])) ? $_GET['f_id'] : null;
 		
 		
-		$close_button = "data_donation.php?page=form_edit&id=".$id."";
+		$close_button = "data_donation.php?page=form_detail&id=".$id."";
 	
 
 		
@@ -140,7 +130,7 @@ switch ($page) {
 			$action = "data_donation.php?page=save_foto&id=$id";
 		}
 
-		include '../views/entry_donation/form_foto.php';
+		include '../views/data_donation/form_foto.php';
 	
 	break;
 	

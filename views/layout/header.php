@@ -8,7 +8,7 @@ if(!$_SESSION['login']){
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Sistem Informasi Data Bantuan Sosial</title>
+        <title>Sistem Informasi EMS E-Montoring System</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
         <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />

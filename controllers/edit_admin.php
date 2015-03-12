@@ -45,7 +45,6 @@ switch ($page) {
 		$i_phone = get_isset($i_phone);
 	
 
-	
 		$path = "../img/user/";
 		$i_img_tmp = $_FILES['i_img']['tmp_name'];
 		$i_img = ($_FILES['i_img']['name']) ? $_FILES['i_img']['name'] : "";
@@ -55,7 +54,8 @@ switch ($page) {
 		$cek_i_login = cek_name_login($i_login,$id);
 
 		if($cek_i_login >= '1'){
-			header("Location: edit_admin.php?page=form&id=$id&err=2");
+			
+		header("Location: edit_admin.php?page=form&id=$id&err=2");
 		
 		}else{
 		
@@ -67,32 +67,26 @@ switch ($page) {
 					
 					
 					mysql_query("UPDATE users SET user_password='".$i_password."' where user_id = '".$id."'");
-				}
-				if($i_img){
-					$data = " user_login = '$i_login', 
+					if($i_img){
+						move_uploaded_file($i_img_tmp, $path.$i_img);
+						$data = " user_login = '$i_login', 
 						 	user_name = '$i_name',
 						 	user_phone = '$i_phone',
 						 	user_img = '$i_img'";
-				}else{
-					$data = " user_login = '$i_login', 
+					
+					}else{
+						$data = " user_login = '$i_login', 
 								user_name = '$i_name',
 								user_phone = '$i_phone'
 						";
 						
-			}
-	
-	
-			update($data, $id);
-			//log_data(3, $id, $_SESSION['user_id'],  "edit admin");
-			if($i_img){
-				move_uploaded_file($i_img_tmp, $path.$i_img);
-			}
+					}
+					update($data, $id);
 		
-			
-		
-		}
-	header('Location: edit_admin.php?page=form&did=2');
-
+					header('Location: edit_admin.php?page=form&did=2');
+				}
+				
+}
 	break;
 }
 

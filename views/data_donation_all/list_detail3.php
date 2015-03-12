@@ -1,6 +1,6 @@
 
  <!-- Main content -->
-                <section class="content">
+              
                    
                     
                      <div class="row">
@@ -28,7 +28,7 @@
                                                   	<th>Thn <br />Anggaran</th> 
                                                     <th>Nama Penerima Bantuan</th>
                                                     <th>Jumlah<br /> Nominal Bantuan</th>
-                                                      <th>Progress<br />Bantuan</th>
+                                                    <th>Progress<br />Bantuan</th>
                                                     <th>Config</th>
                                             </tr>
                                         </thead>

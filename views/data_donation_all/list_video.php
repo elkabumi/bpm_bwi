@@ -51,7 +51,7 @@
                                         </tbody>
                                           <tfoot>
                                             <tr>
-                                                <td colspan="4"><a href="entry_donation.php?page=form_video&id=<?= $_GET['id']?>&type=<?=$type?>" class="btn btn-success " >Add Video</a></td>
+                                                <td colspan="4"><a href="data_donation_all.php?page=form_video&id=<?= $_GET['id']?>&year=<?=$year?>&month=<?=$month?>" class="btn btn-success " >Add Video</a></td>
                                                
                                             </tr>
                                         </tfoot>

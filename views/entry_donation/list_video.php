@@ -1,7 +1,7 @@
 
                              <div class="title_page">Dokumentasi Video</div>
                             
-                            <div class="box">
+                            <div class="box" style=" border: 1px solid #ddd;">
                              
                                 <div class="box-body2 table-responsive">
                                     <table id="example2" class="table table-bordered table-striped">

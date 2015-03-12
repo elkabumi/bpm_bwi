@@ -34,6 +34,7 @@ switch ($page) {
 		}
 		get_footer();
 	break;
+	
 	case 'form':
 		get_header();
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
@@ -91,7 +92,8 @@ switch ($page) {
 			$row->d_don_pengajuan 	 = false;
 			$row->d_don_diterima = false;
 			$row->d_don_disetujui = false;
-			
+			$row->m_don_type_id = false;
+			$row->m_don_from_id = false;
 			$action = "entry_donation.php?page=save&type=".$type."";
 			$button = "Save";
 		}
@@ -206,6 +208,8 @@ switch ($page) {
 		$i_diterima_date = format_back_date(get_isset($i_diterima_date));
 		$i_disetujui_date =format_back_date(get_isset($i_disetujui_date));
 		$i_implementation_date =format_back_date(get_isset($i_implementation_date));
+		$i_type_id =(get_isset($i_type_id));
+		
 			$data = "'',
 					'$i_no', 
 					'$i_kec_id',
@@ -227,14 +231,15 @@ switch ($page) {
 					'$i_diajukan_date', 
 					'$i_diterima_date', 
 					'$i_disetujui_date',
-					'$i_implementation_date'
+					'$i_implementation_date',
+					'$i_type_id'
 
 			";
 			
 			//echo $data;
 			create($data);
 			$id=mysql_insert_id();
-			header('Location: entry_donation.php?page=form&did=1&id='.$id.'&type='.$type.'');
+			header('Location: entry_donation.php?page=form&did=1&id='.$id.'');
 		
 	break;
 	
@@ -257,7 +262,7 @@ switch ($page) {
 		create_video($data);
 	
 		
-		header("Location: entry_donation.php?page=form&did=2&id=$id&type=".$type."");
+		header("Location: entry_donation.php?page=form&did=2&id=$id");
 		
 		
 	break;
@@ -290,7 +295,7 @@ switch ($page) {
 			";
 			create_foto($data);
 			
-			header("Location: entry_donation.php?page=form&did=2&id=".$id."&type=".$type."");
+			header("Location: entry_donation.php?page=form&did=2&id=".$id."");
 
 	break;
 	
@@ -324,7 +329,8 @@ switch ($page) {
 		$i_l = get_isset($i_l);
 		$i_t = get_isset($i_t);
 		$i_description = get_isset($i_description);
-		
+		$i_from_id = get_isset($i_from_id);
+		$i_type_id =(get_isset($i_type_id));
 				$data = "
 					m_loct_id = '$i_kec_id',
 					m_activity_id = '$i_actv_id',
@@ -341,7 +347,8 @@ switch ($page) {
 					d_don_dim_t = '$i_t',
 					d_don_desc = '$i_description',
 					d_don_prog = '$i_prog',
-					d_don_from = '$i_from_id'
+					m_don_from_id = '$i_from_id',
+					m_don_type_id = '$i_type_id'
 					";
 
 			

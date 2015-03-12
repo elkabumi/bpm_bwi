@@ -1,18 +1,18 @@
 
-                   
+                   <br />
                              <div class="title_page">Dokumentasi Foto</div>
                             
-                            <div class="box">
+                            <div class="box"  style=" border: 1px solid #ddd;">
                              
                                 <div class="box-body table-responsive">
                                     <table id="example_foto" class="table table-bordered ">
                                           <thead>
                                             <tr style="display:none">
-                                          	  <th width="1">No</th>
+                                            
                                             	<th>&nbsp;</th>
-                                                 <th width="1">No</th>
+                                               
                                       			<th>&nbsp;</th>
-                                                 <th width="1">No</th>
+                                        
                                        			<th>&nbsp;</th>
                                                
                                         
@@ -38,9 +38,9 @@
 												
 												while($r_foto = mysql_fetch_array($q_foto)){
 												?>
-													<td ><?=$no_foto ?></td>
+													
 													<td>
-                                                   <b><?= $r_foto['d_pho_nm']?></b><br />
+                                                 <br />  <br /> <b><?= $r_foto['d_pho_nm']?></b> <br /><br />
 													<?php if($r_foto['d_pho_file'] != ''){ ?>
 																<img src="<?= $r_foto['d_pho_file']?>" width="150" height="150" />
 													<?php
@@ -66,7 +66,7 @@
 														if($colom_lebih != 0){
 															for($colom_tambahan=1;$colom_tambahan<=$colom_lebih;$colom_tambahan++){
 												?>
-                                                		<td></td>
+                                                		
                                                         
                                                 		<td><img src="../img/none.jpg" width="150" height="150"/></td>
                                                 <?php
@@ -86,7 +86,7 @@
                                         </tbody>
                                           <tfoot>
                                             <tr>
-                                                <td colspan="4"><a href="entry_donation.php?page=form_foto&id=<?= $_GET['id']?>&type=<?=$type?>" class="btn btn-success " >Add  Foto</a></td>
+                                                <td colspan="4"><a href="entry_donation.php?page=form_foto&id=<?= $_GET['id']?>&year=<?=$year?>&month=<?=$month?>" class="btn btn-success " >Add  Foto</a></td>
                                                
                                             </tr>
                                         </tfoot>

@@ -83,8 +83,8 @@ function read_photo_id($id){
 	$result = mysql_fetch_object($query);
 	return $result;
 }
-function select_foto_donation($id){
-	$query = mysql_query("select * from  d_photo where d_don_id = ".$id." order by d_photo_id");
+function select_foto_donation($id,$limit_start,$limit_end){
+	$query = mysql_query("select * from  d_photo where d_don_id = ".$id." order by d_photo_id LIMIT $limit_start,$limit_end" );
 	return $query;
 }
 function select_video_donation($id){
@@ -99,5 +99,11 @@ function get_id_desa($id){
 	$r=mysql_fetch_object($q);
 	
 	return $r->m_loct_id;
+}
+function count_foto($id){
+	$q=mysql_query("SELECT  COUNT(d_photo_id)AS jml_foto  FROM d_photo WHERE d_don_id = ".$id."");
+	$r=mysql_fetch_object($q);
+	
+	return $r->jml_foto;
 }
 ?>

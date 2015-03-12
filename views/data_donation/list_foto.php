@@ -1,55 +1,101 @@
-    <div class="row">
-                        <div class="col-md-12">
+
+                   <br />
                              <div class="title_page">Dokumentasi Foto</div>
                             
-                            <div class="box">
+                            <div class="box"  style=" border: 1px solid #ddd;">
                              
-                                <div class="box-body2 table-responsive">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                            	<th width="5%">No</th>
-                                                <th>Nama Foto</th>
-                                                <th>Foto</th>
-                                                  <th>Config</th>
+                                <div class="box-body table-responsive">
+                                    <table id="example_foto" class="table table-bordered ">
+                                          <thead>
+                                            <tr style="display:none">
+                                            
+                                            	<th>&nbsp;</th>
+                                               
+                                      			<th>&nbsp;</th>
+                                        
+                                       			<th>&nbsp;</th>
+                                               
                                         
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $q_foto = select_foto_donation($id);
-											$no_foto = 1;
-                                            while($r_foto = mysql_fetch_array($q_foto)){
-                                            ?>
-                                            <tr>
-                                            	<td><?= $no_foto?></td>
-                                                <td><?= $r_foto['d_pho_nm']?></td>
-                                                <td>
-												<?php if($r_foto['d_pho_file'] != ''){ ?>
-                                                <img src="<?= $r_foto['d_pho_file']?>" width="50" height="50" /></td>
-												<?php
-                                                }
-												?>
-                                                 <td style="text-align:center;">
- 											
+                                            $jml_foto = count_foto($id);
+											$total_page=ceil($jml_foto/3);
 											
-                                                
-                                                    <a href="data_donation.php?page=form_foto&f_id=<?= $r_foto['d_photo_id']; ?><?=$link_detail?>" class="btn btn-default" >Detail</a>
-                                            
-                                                </td> 
-                                            </tr>
-                                            <?php
-											$no_foto++;
-                                            }
+											for($i=1; $i<=$total_page; $i++){
+												
+												
+												$limit_start = ($i * 3)-3;
+												$limit_end	 =  3;
+												$q_foto = select_foto_donation($id,$limit_start,$limit_end);
+										
+											?>
+                                            	<tr>
+                                            <?
+												
+												$no_foto=($i*3)-3+1;
+												
+												while($r_foto = mysql_fetch_array($q_foto)){
+												?>
+													
+													<td>
+                                                 <br />  <br /> <b><?= $r_foto['d_pho_nm']?></b> <br /><br />
+													<?php if($r_foto['d_pho_file'] != ''){ ?>
+																<img src="<?= $r_foto['d_pho_file']?>" width="150" height="150" />
+													<?php
+													}
+													?>
+                                                   <br />
+                                                    <a href="data_donation.php?page=form_foto&id=<?=$id?>&f_id=<?= $r_foto['d_photo_id']; ?><?=$link_detail?>" class="btn btn-default" >Detail</a>
+                                            	</td>
+											   
+												<?php
+												$no_foto++;
+												}
+												
+													if($i == $total_page){
+														if($total_page > '1'){
+															$mod_total = $jml_foto % 3;
+															if($mod_total > 0){
+																$colom_lebih = 3 - $mod_total;
+															}else{
+																	$colom_lebih = 0;
+															}
+														}else{
+															$colom_lebih = 3- $jml_foto;
+														}
+													
+														if($colom_lebih != 0){
+															for($colom_tambahan=1;$colom_tambahan<=$colom_lebih;$colom_tambahan++){
+												?>
+                                                		
+                                                        
+                                                		<td><img src="../img/none.jpg" width="150" height="150"/></td>
+                                                <?php
+														}
+																										
+													}
+												}
+												
+												?>
+                                                </tr>
+                                                <?
+											}
                                             ?>
 
                                            
                                           
-                                            </tbody>
-                                        
+                                        </tbody>
+                                          <tfoot>
+                                            <tr>
+                                                <td colspan="4"><a href="data_donation_all.php?page=form_foto&id=<?= $_GET['id']?>&type=<?=$type?>" class="btn btn-success " >Add  Foto</a></td>
+                                               
+                                            </tr>
+                                        </tfoot>
                                     </table>
 
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
-                        </div>
-                    </div>
+                  
+                    

@@ -119,7 +119,7 @@ function load_desc_kegiatan(str)
 
                 <!-- Main content -->
                 <section class="content">
-                    <div class="row">
+                   <div class="row">
                      	<?php
 						if(!($_GET['id'])){
                        		 $type_tab = (isset($_GET['type_tab'])) ? $_GET['type_tab'] : "1";
@@ -138,7 +138,7 @@ function load_desc_kegiatan(str)
                         		<div class="tab-content">
                                   
                                     <div class="tab-pane <?php if($type_tab == 1){ ?>active<?php }?>" id="tab_1">
-                               
+                             
                                           <div class="title_page"> <?= $title ?></div>
                 
                       						<form  class="cmxform" name="form" id="createForm" action="<?= $action?>" method="post" enctype="multipart/form-data" role="form" onSubmit="return valid()">
@@ -171,6 +171,26 @@ function load_desc_kegiatan(str)
                                                                       ?>
                                                         </select> 
                                                         </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                        <div class="form-group">
+                                                        <label>Jenis Bantuan</label>
+                                                              <select id="basic" name="i_type_id" class="selectpicker show-tick form-control" data-live-search="true" onChange="load_desc_kegiatan(this.value)" > >
+                                                  					<?php
+                                                                            $query_don=mysql_query("SELECT *
+                                                                                                    FROM m_don_t");
+                                                                            while($row_don= mysql_fetch_array($query_don)){
+                                                                     ?>
+                               <option value="<?= $row_don['m_don_t_id']?>"<?php if($row->m_don_type_id == $row_don['m_don_t_id']){?> selected="selected" <?php } ?>><?= $row_don['m_don_t_nm'] ?></option>
+                                                                  <?php
+                                                                  }
+                                                                      ?>
+                                                        </select> 
+                                                                  
+                                                        </select> 
+                                                        </div>
+                                                        </div>
+                                                          <div class="col-md-6">
                                                         <div class="form-group">
                                                         <label>Jenis Kegiatan</label>
                                                               <select id="basic" name="i_actv_id" class="selectpicker show-tick form-control" data-live-search="true" onChange="load_desc_kegiatan(this.value)" > >
@@ -186,7 +206,10 @@ function load_desc_kegiatan(str)
                                                                       ?>
                                                         </select> 
                                                         </div>
-                                                             <div id="desc_kegiatan">
+                                                        </div>
+                                                        
+                                                        <div class="col-md-12">
+                                                        <div id="desc_kegiatan">
                                                         </div>
                                                         <?php
                                                         if($row->m_activity_id == '999'){
@@ -220,13 +243,14 @@ function load_desc_kegiatan(str)
                                                             <label>Asal Bantuan</label>
                                                          		<select id="basic" name="i_from_id" class="selectpicker show-tick form-control" data-live-search="true" onChange="load_desc_kegiatan(this.value)" > >
                                                   				<?php
-																	$from = array('1'=>'Dinas Sosial','2'=>'Bantuan Perusahaan','3'=>'Bantuan Perorangan');
-																	for($i=1; $i<=3; $i++){
-																?>
-                                                                	<option value="<?=$i?>" <?php if($row->d_don_from == $i){?> selected="selected"<?php }?>><?=$from[$i];?></option>
-                                                                <?php 
-																	}
-																?>
+                                                                            $query_don_from=mysql_query("SELECT *
+                                                                                                    FROM m_don_from");
+                                                                            while($row_don_from= mysql_fetch_array($query_don_from)){
+                                                                     ?>
+                               <option value="<?= $row_don_from['m_don_f_id']?>"<?php if($row->m_don_from_id == $row_don_from['m_don_f_id']){?> selected="selected" <?php } ?>><?= $row_don_from['m_don_f_nm'] ?></option>
+                                                                  <?php
+                                                                  }
+                                                                      ?>
                                                         </select> 
                                                         </div>
                                                         </div>

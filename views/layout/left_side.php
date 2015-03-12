@@ -31,50 +31,55 @@
                    <?php //if(isset($_SESSION['menu_active'])) { echo $_SESSION['menu_active']; }?>
                     <ul class="sidebar-menu">
                      
-                          <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 1){ echo "active"; }?>">
-                            <a href="#">
-                                <i class="fa fa-list-alt"></i>
-                                <span>Master </span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="sub_district.php?page=list"><i class="fa fa-chevron-circle-right"></i>Kecamatan</a></li>
-                                 
-                                <li><a href="village.php?page=list"><i class="fa fa-chevron-circle-right"></i>Kelurahan</a></li>
-                                 
-                                <li><a href="activity.php?page=list"><i class="fa fa-chevron-circle-right"></i>Jenis Kegiatan</a></li>
-                                
-                                <li><a href="unit.php?page=list"><i class="fa fa-chevron-circle-right"></i>Satuan</a></li>
-                             </ul>
-                  </li>
+                        
                                 
                   
                     <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "class='active'"; } ?>>
                             <a href="entry_donation.php">
                                 <i class="fa fa-user"></i>
-                                <span>Entry Bantuan</span>
+                                <span>Entry Kegiatan Bantuan</span>
                                
                             </a>
                           
                  		 </li>
+                     <?php
+                   				 if($_SESSION['user_grade_id'] == 999){
+					?>
                       <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "active"; }?>">
                            <a href="#">
                                 <i class="fa fa-list-alt"></i>
-                                <span>Data Bantuan </span>
+                                <span>Data Kegiatan </span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="data_donation.php?page=list"><i class="fa fa-chevron-circle-right"></i>Data Bantuan Kecamatan</a></li>
-								<li><a href="data_donation_all.php?page=list"><i class="fa fa-chevron-circle-right"></i>Data Bantuan Keseluruhan</a></li>
+                                <li><a href="data_donation.php?page=list"><i class="fa fa-chevron-circle-right"></i>Data Kegiatan Per Kecamatan</a></li>
+								<li><a href="data_donation_all.php?page=list"><i class="fa fa-chevron-circle-right"></i>Data Kegiatan Keseluruhan</a></li>
              				
                              </ul>
                  
                        </li>
+                       <?php
+					 }
+					 ?>
+                     <?php
+					  if($_SESSION['user_grade_id'] == 1){
+					?>
+                       <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "class='active'"; } ?>>
+                         	<a href="data_donation.php">
+                                <i class="fa fa-user"></i>
+                              		 <span>Data Kegiatan </span>
+                               
+                            </a>
+                 
+                       </li>
+                       <?php
+								 }
+					   ?>
   
                        <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 4){ echo "active"; }?>">
                             <a href="#">
                                 <i class="fa fa-list-alt"></i>
-                                <span>Evaluasi Data Bantuan </span>
+                                <span>Rakapitulasi Data Bantuan </span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
@@ -98,6 +103,29 @@
                                 <span>User</span>
                                
                             </a>
+                              <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 1){ echo "active"; }?>">
+                            <a href="#">
+                                <i class="fa fa-list-alt"></i>
+                                <span>Master </span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="sub_district.php?page=list"><i class="fa fa-chevron-circle-right"></i>Kecamatan</a></li>
+                                 
+                                <li><a href="village.php?page=list"><i class="fa fa-chevron-circle-right"></i>Kelurahan</a></li>
+                                <li><a href="type_donation.php?page=list"><i class="fa fa-chevron-circle-right"></i>Jenis Bantuan</a></li>
+                                
+                                <li><a href="activity.php?page=list"><i class="fa fa-chevron-circle-right"></i>Jenis Kegiatan</a></li>
+                                <li><a href="from_donation.php?page=list"><i class="fa fa-chevron-circle-right"></i>Asal Bantuan</a></li>
+                               
+                                <li><a href="unit.php?page=list"><i class="fa fa-chevron-circle-right"></i>Satuan</a></li>
+                            	<li><a href="prkata.php?page=list"><i class="fa fa-chevron-circle-right"></i>Prakata</a></li>
+                               
+                                <li><a href="deskripsi.php?page=list"><i class="fa fa-chevron-circle-right"></i>Deskripsi Program</a></li>
+                             
+                            
+                             </ul>
+                  </li>
                             
                   </li>
                  <?php

@@ -36,9 +36,11 @@ switch ($page) {
 				$total_data3 = count_data(3,$i_year,$i_month); 
 				
 		}else{
-				$nama_bulan = nm_bulan($i_month);
 				$i_year= date('Y');
-				$i_month= date('m');
+				$i_month= date('m')-1+1;
+			
+				$nama_bulan = nm_bulan($i_month);
+				
 				
 				$query 	= select(1,$i_year,$i_month); ;//tahap Selesai
 				$total_data = count_data(1,$i_year,$i_month); 
@@ -96,18 +98,9 @@ switch ($page) {
 		$year = (isset($_GET['year'])) ? $_GET['year'] : null;
 		$month = (isset($_GET['month'])) ? $_GET['month'] : null;
 		
-		if(isset($type) and $type == '1'){
 			$id_ds = get_id_desa($id);
-			$close_button = "data_donation.php?page=list&year=".$year."&month=".$month."";
-		}else{
-			if($_SESSION['user_grade_id']  == '999'){
-				$kec_id = (isset($_GET['kec_id'])) ? $_GET['kec_id'] : null;
-				$close_button = "data_donation_all.php?page=list";
-			}else{
-				$kec_id = $_SESSION['user_loct_id'];	
-				$close_button = "data_donation_all.php?page=form&add=1";
-			}
-		}
+			$close_button = "data_donation_all.php?page=list&year=".$year."&month=".$month."";
+		
 		if($id){
 			
 			$row = read_id($id);
@@ -202,7 +195,8 @@ switch ($page) {
 		
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		$f_id = (isset($_GET['f_id'])) ? $_GET['f_id'] : null;
-		$type = (isset($_GET['type'])) ? $_GET['type'] : null;
+			$year = (isset($_GET['year'])) ? $_GET['year'] : null;
+			$month = (isset($_GET['month'])) ? $_GET['month'] : null;
 		
 		$close_button = "data_donation_all.php?page=form&id=$id&year=".$year."&month=".$month."";
 
@@ -233,7 +227,8 @@ switch ($page) {
 	case 'save':
 
 		extract($_POST);
-		
+			$year = (isset($_GET['year'])) ? $_GET['year'] : null;
+			$month = (isset($_GET['month'])) ? $_GET['month'] : null;
 		$type = (isset($_GET['type'])) ? $_GET['type'] : null;
 		
 		$i_no = get_isset($i_no);
@@ -300,7 +295,8 @@ switch ($page) {
 	case 'save_video':
 	
 		extract($_POST);
-		$type = (isset($_GET['type'])) ? $_GET['type'] : null;
+			$year = (isset($_GET['year'])) ? $_GET['year'] : null;
+			$month = (isset($_GET['month'])) ? $_GET['month'] : null;
 		
 		$i_nm 	=	get_isset($i_nm);
 		$i_link =	get_isset($i_link);
@@ -323,7 +319,8 @@ switch ($page) {
 	
 	case 'save_foto':
 		extract($_POST);
-		$type = (isset($_GET['type'])) ? $_GET['type'] : null;
+			$year = (isset($_GET['year'])) ? $_GET['year'] : null;
+			$month = (isset($_GET['month'])) ? $_GET['month'] : null;
 		
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		
@@ -358,7 +355,8 @@ switch ($page) {
 	
 		extract($_POST);
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
-		$type = (isset($_GET['type'])) ? $_GET['type'] : null;
+			$year = (isset($_GET['year'])) ? $_GET['year'] : null;
+			$month = (isset($_GET['month'])) ? $_GET['month'] : null;
 		
 		$i_no = get_isset($i_no);
 		$i_kec_id = get_isset($i_kec_id);
@@ -384,6 +382,10 @@ switch ($page) {
 		$i_t = get_isset($i_t);
 		$i_description = get_isset($i_description);
 		
+		$i_diajukan_date = format_back_date(get_isset($i_diajukan_date));
+		$i_diterima_date = format_back_date(get_isset($i_diterima_date));
+		$i_disetujui_date =format_back_date(get_isset($i_disetujui_date));
+		$i_implementation_date =format_back_date(get_isset($i_implementation_date));
 				$data = "
 					m_loct_id = '$i_kec_id',
 					m_activity_id = '$i_actv_id',
@@ -400,7 +402,12 @@ switch ($page) {
 					d_don_dim_t = '$i_t',
 					d_don_desc = '$i_description',
 					d_don_prog = '$i_prog',
-					d_don_from = '$i_from_id'
+					d_don_from = '$i_from_id',
+					
+					d_don_pengajuan  = '$i_diajukan_date',
+					d_don_diterima 	= '$i_diterima_date',
+					d_don_disetujui 	= '$i_disetujui_date',
+					d_don_implementation = '$i_implementation_date'
 					";
 
 			
@@ -416,7 +423,8 @@ switch ($page) {
 
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		$v_id = (isset($_GET['v_id'])) ? $_GET['v_id'] : null;
-		$type = (isset($_GET['type'])) ? $_GET['type'] : null;
+		$year = (isset($_GET['year'])) ? $_GET['year'] : null;
+			$month = (isset($_GET['month'])) ? $_GET['month'] : null;
 		
 		$i_nm 	=	get_isset($i_nm);
 		$i_link =	get_isset($i_link);
@@ -442,7 +450,8 @@ switch ($page) {
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		$f_id = (isset($_GET['f_id'])) ? $_GET['f_id'] : null;
 
-		$type = (isset($_GET['type'])) ? $_GET['type'] : null;
+			$year = (isset($_GET['year'])) ? $_GET['year'] : null;
+			$month = (isset($_GET['month'])) ? $_GET['month'] : null;
 
 		$i_prog = get_isset($i_prog);
 		$i_nm = get_isset($i_nm);
@@ -485,7 +494,8 @@ switch ($page) {
 
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		$f_id = (isset($_GET['f_id'])) ? $_GET['f_id'] : null;
-		$type = (isset($_GET['type'])) ? $_GET['type'] : null;
+			$year = (isset($_GET['year'])) ? $_GET['year'] : null;
+			$month = (isset($_GET['month'])) ? $_GET['month'] : null;
 		
 		$r_img = get_img($f_id);
 			if($r_img != ""){
@@ -503,7 +513,8 @@ switch ($page) {
 
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		$v_id = (isset($_GET['v_id'])) ? $_GET['v_id'] : null;
-		$type = (isset($_GET['type'])) ? $_GET['type'] : null;
+			$year = (isset($_GET['year'])) ? $_GET['year'] : null;
+			$month = (isset($_GET['month'])) ? $_GET['month'] : null;
 		
 		delete_video($v_id);
 		
